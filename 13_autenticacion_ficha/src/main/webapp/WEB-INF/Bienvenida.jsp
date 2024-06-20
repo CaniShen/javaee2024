@@ -7,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="TablaNumero" method="post">
-		Introduce número: <input type="number" name="numero"><br><br>
-		<br><br><br><br><br><br>
-		
-		<input type="submit" value="Tabla">
-		
-	</form>
 
 </body>
 </html>
