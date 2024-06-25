@@ -18,18 +18,11 @@ public class EscuchadorEventos implements ServletContextListener, HttpSessionLis
     	 //inicializar atributo de sesión contador
     	HttpSession sesion=se.getSession();
     	sesion.setAttribute("contador", 0);
-    	
-    	
-    	ServletContext context=sesion.getServletContext();
-    	int activos=(Integer)context.getAttribute("activos");
-    	context.setAttribute("activos", ++activos);
     }
 
 
     public void sessionDestroyed(HttpSessionEvent se)  { 
-    	ServletContext context=se.getSession().getServletContext();
-    	int activos=(Integer)context.getAttribute("activos");
-    	context.setAttribute("activos", --activos);
+        
     	
     }
 
@@ -37,7 +30,6 @@ public class EscuchadorEventos implements ServletContextListener, HttpSessionLis
     public void contextInitialized(ServletContextEvent sce)  { 
         ServletContext context=sce.getServletContext();
         context.setAttribute("global", 0);
-        context.setAttribute("activos", 0);
     }
 
 
