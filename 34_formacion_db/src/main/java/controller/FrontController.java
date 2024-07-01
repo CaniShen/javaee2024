@@ -1,4 +1,4 @@
-package servlets;
+package controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,25 +16,30 @@ public class FrontController extends HttpServlet {
 		String operation=request.getParameter("operation");
 		urlVista=switch(operation) {
 			case "doLogin"-> {
-				request.getRequestDispatcher("LoginAction").include(request, response);
+				request.getRequestDispatcher("LoginController").include(request, response);
 				yield (Boolean)request.getAttribute("autenticado")? "menu.html":"error.jsp";
 			}
 			case "doEliminar"-> {
-				request.getRequestDispatcher("EliminarAction").include(request, response);
-				yield "menu.html";
+				request.getRequestDispatcher("EliminarController").include(request, response);
+				yield "eliminar.jsp";
 			}
 			case "doBuscar"-> {
-				request.getRequestDispatcher("BuscarAction").include(request, response);
-				yield "resultado.jsp";
+				request.getRequestDispatcher("BuscarController").include(request, response);
+				yield "cursos.jsp";
 			}
-			case "doBuscarResultados"-> {
-				request.getRequestDispatcher("BuscarResultadosAction").include(request, response);
-				yield "resultados.jsp";
+			case "doGuardar"->{
+				request.getRequestDispatcher("GuardarController").include(request, response);
+				yield "nuevo.jsp";
 			}
-			case "toAlta"->"alta.html";
+			case "doModificar"->{
+				request.getRequestDispatcher("ModificarController").include(request, response);
+				yield "modificar.jsp";
+			}
+			case "toNuevo"->"nuevo.jsp";
 			case "toBuscar"->"buscar.html";
-			case "toEliminar"->"eliminar.html";
-			case "toBuscarResultados"->"buscarResultados.html";
+			case "toEliminar"->"eliminar.jsp";
+			case "toMenu"->"menu.html";
+			case "toModificar"->"modificar.jsp";
 			default ->"login.html";
 			
 			
