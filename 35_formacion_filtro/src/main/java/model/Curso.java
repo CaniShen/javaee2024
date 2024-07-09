@@ -5,15 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="cursos")
-
+@NamedQuery(name="Curso.findByPrecio",query="select c from Curso c where c.precio<=?1")
 public class Curso {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idCurso;
+	private int codCurso;
 	@Column(name="nombre")
 	private String nombre;
 	private String tematica;
@@ -21,7 +22,7 @@ public class Curso {
 	private double precio;
 	public Curso(int idCurso, String nombre, String tematica, int duracion, double precio) {
 		super();
-		this.idCurso = idCurso;
+		this.codCurso = codCurso;
 		this.nombre = nombre;
 		this.tematica = tematica;
 		this.duracion = duracion;
@@ -30,11 +31,11 @@ public class Curso {
 	public Curso() {
 		super();
 	}
-	public int getIdCurso() {
-		return idCurso;
+	public int getCodCurso() {
+		return codCurso;
 	}
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setCodCurso(int codCurso) {
+		this.codCurso = codCurso;
 	}
 	public String getNombre() {
 		return nombre;

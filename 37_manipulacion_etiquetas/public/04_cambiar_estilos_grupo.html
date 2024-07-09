@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <p>Parrafo 1</p>
@@ -14,13 +15,17 @@
     <input type="button" value="Poner negrita" onclick="negrita();">
 
     <script>
-        function negrita() {
-            var parrafos=document.getElementsByTagName("p");
-            for(let p of parrafos) {
-                p.style.fontWeight="Bold";
-
-            }
-        }
+    	$("#negrita").click(function(){
+    		/*$("p").each(function(i,e){  //posiscion y el propio 
+    			 e.style.fontWeight="Bold";
+    		});*/
+    		//$("p").each((i,e)=>e.style.fontWeight="Bold");
+    		/*$("p").each(function(){
+    			$(this).css("font-weight","Bold");
+    		});*/
+    		$("p").css("font-weight","Bold");
+    	});
+       
     </script>
 
 </body>
