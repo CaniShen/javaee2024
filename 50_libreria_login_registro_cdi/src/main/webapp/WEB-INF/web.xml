@@ -4,5 +4,14 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-
+  <servlet>
+    <description></description>
+    <display-name>RegistrarController</display-name>
+    <servlet-name>RegistrarController</servlet-name>
+    <servlet-class>controller.RegistrarController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrarController</servlet-name>
+    <url-pattern>/RegistrarController</url-pattern>
+  </servlet-mapping>
 </web-app>

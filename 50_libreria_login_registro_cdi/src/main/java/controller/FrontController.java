@@ -14,6 +14,16 @@ public class FrontController extends HttpServlet {
 		String operation=request.getParameter("operation");
 		String urlView="";
 		switch(operation) {
+		case "doLogin":
+			request.getRequestDispatcher("LoginController").include(request, response);
+			boolean autenticado = (Boolean) request.getAttribute("autenticado");
+			if (autenticado) {
+	            // Redireccionar al menú si autenticado es true
+	            response.sendRedirect("index.html");
+	        } else {
+	           System.out.println("No existe el usuario o la contraseña está mal!!!");
+	        }
+			break;
 		case "doTemas":
 			request.getRequestDispatcher("TemasController").include(request, response);
 			urlView="visor.jsp";
