@@ -17,45 +17,25 @@
 	<div class="container">
 		<div class="login-box">
 			<h2>Autenticación de cliente</h2>
-			<form action="FrontController?operation=doLogin" method="post"
-				onsubmit="return validar();">
+			<form action="FrontController?operation=doLogin" method="post">
 				<div class="input-group">
-					<label for="username">Usuario</label> <input type="text"
-						id="username" name="usuario" required>
+					<label for="username">Usuario</label> 
+					<input type="text" id="username" name="usuario" required>
 				</div>
 				<div class="input-group">
-					<label for="password">Contraseña</label> <input type="password"
-						id="password" name="password" required>
+					<label for="password">Contraseña</label> 
+					<input type="password" id="password" name="password" required>
 				</div>
-
+				<div class="form-group remember-me">                   
+                 	<a href="FrontController?operation=toRegistro">Registrese</a>
+                </div>
 				<div class="input-group">
-					<button type="submit" value="Validar">Enviar</button>
+					<button type="submit">Entrar</button>
 				</div>
-				<h3>
-					<a href="FrontController?operation=doRegistrar">Registrar</a>
-				</h3>
-
+			
 			</form>
-			<script type="text/javascript">
-        function validar() {
-            let usuario = document.getElementById("usuario").value;
-            let contrasenia = document.getElementById("edad").value;
-            if (nombre.trim().length == 0) {
-                alert("Datos no válidos. El nombre no puede estar vació");
-                return false;
-
-            }
-            if (isNaN(edad)) {
-                alert("Datos no válidos. El campo edad debe ser númerico");
-                return false;
-            }
-            alert("Datos válidos!!");
-            return true;
-        }
-    </script>
-
-
 		</div>
 	</div>
+
 </body>
 </html>

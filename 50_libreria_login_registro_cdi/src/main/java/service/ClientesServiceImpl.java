@@ -5,6 +5,7 @@ import dtos.ClienteDto;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import mappers.Mapeador;
+import model.Cliente;
 @Named
 public class ClientesServiceImpl implements ClientesService {
 	@Inject
@@ -14,11 +15,13 @@ public class ClientesServiceImpl implements ClientesService {
 	@Override
 	public boolean autenticar(String usuario, String password) {
 		
-			if(clientesDao.findByUsuario(usuario).equals(usuario)
+	/*		if(clientesDao.findByUsuario(usuario).equals(usuario)
 					&&clientesDao.findByUsuario(password).equals(password)) {
 				return true;
 		}
-		return false;
+		return false;MAL !!!!!!!!!*/
+		Cliente cliente= clientesDao.findByUsuario(usuario);
+		return cliente!=null&cliente.getPassword().equals(password);
 		
 	}
 
@@ -31,4 +34,10 @@ public class ClientesServiceImpl implements ClientesService {
 		return true;
 	}
 
+	/*if(clientesDao.findByUsuario(cliente.getUsuario())==null) {//si no encuentra cliente con ese usuario, lo guarda
+			clientesDao.save(mapeador.clienteDtoToEntity(cliente));
+			return true;
+		}
+		return false;
+	}*/
 }

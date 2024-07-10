@@ -14,16 +14,6 @@ public class FrontController extends HttpServlet {
 		String operation=request.getParameter("operation");
 		String urlView="";
 		switch(operation) {
-		case "doLogin":
-			request.getRequestDispatcher("LoginController").include(request, response);
-			boolean autenticado = (Boolean) request.getAttribute("autenticado");
-			if (autenticado) {
-	            // Redireccionar al menú si autenticado es true
-	            response.sendRedirect("index.html");
-	        } else {
-	           System.out.println("No existe el usuario o la contraseña está mal!!!");
-	        }
-			break;
 		case "doTemas":
 			request.getRequestDispatcher("TemasController").include(request, response);
 			urlView="visor.jsp";
@@ -40,16 +30,29 @@ public class FrontController extends HttpServlet {
 			request.getRequestDispatcher("QuitarCarritoController").forward(request,response);
 			return;//en peticiones AJAX la respuesta la lleva a cabo
 					//el servlet controlador
-	
 		case "doPaginaNuevo":
 			request.getRequestDispatcher("TemasController").include(request, response);
 			urlView="alta.jsp";
+			break;
+		case "doLogin":
+			request.getRequestDispatcher("LoginController").include(request, response);
+			urlView=(boolean)request.getAttribute("autenticado")?"index.html":"registro.html";
 			break;
 		
 		case "doAltaLibro":
 			request.getRequestDispatcher("AltaLibroController").forward(request, response);
 			return;// en peticiones AJAX la respuesta la lleva a cabo
 					//el servlet controlador
+		case "doRegistrar":
+				request.getRequestDispatcher("RegistroController").forward(request, response);
+				return;//en petición AJAX la respuesta la lleva a cabo
+						//el servlet controlador
+		case "toRegistro"://petición desde enlace"Resgistrese"
+				urlView="registro.html";
+				break;
+		case "toLogin":
+			urlView="login.html";
+				break;
 		default:
 			urlView="index.html";
 		
