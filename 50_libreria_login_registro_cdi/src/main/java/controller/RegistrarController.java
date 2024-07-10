@@ -35,7 +35,7 @@ public class RegistrarController extends HttpServlet {
 		
 		PrintWriter out=response.getWriter();
 		response.setContentType("text/plain");
-		out.print(clientesDao.save(cliente));1
+		out.print(clientesDao.save(cliente));
 	}
 
 }
