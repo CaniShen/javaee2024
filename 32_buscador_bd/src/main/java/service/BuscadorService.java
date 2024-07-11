@@ -45,8 +45,8 @@ public class BuscadorService {
 		}
 	}
 	public List<Resultado> resultadosPorTematica(String tematica) {
-		String jpql="select r from Resultado r where r.tematica=?1";
-		TypedQuery<Resultado> query=eManager.createNamedQuery(jpql, Resultado.class);
+		String jpql="select r from Resultado r where r.tematica=:tem";
+		TypedQuery<Resultado> query=eManager.createQuery(jpql, Resultado.class);
 		query.setParameter("tem", tematica);
 		return query.getResultList();
 

@@ -19,7 +19,7 @@ public class BuscarAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BuscadorService buscadorservice=new BuscadorService();
 		Resultado resultado=buscadorservice.buscarResultadoPorId(Integer.parseInt((request.getParameter("idResultado"))));
-		request.setAttribute("resultados", resultado);
+		request.setAttribute("resultado", resultado);
 		
 	}
 
